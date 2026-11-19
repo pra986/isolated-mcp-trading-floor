@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "isolated-mcp-trading-floor"
+version = "0.1.0"
+description = "Project 25: Four-persona autonomous MCP trading floor with isolated per-trader memory namespaces, market-hours gates, tick_run_id idempotency, and transactional SQLite accounts."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+dependencies = [
+    "mcp>=1.0.0",
+    "pydantic>=2.6.0",
+    "python-dotenv>=1.0.1",
+    "openai-agents>=0.0.14",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
