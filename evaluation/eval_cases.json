@@ -1,0 +1,30 @@
+{
+  "suite": "isolated-mcp-trading-floor",
+  "cases": [
+    {
+      "id": "eval_memory_isolation",
+      "description": "Verify persona memory namespaces are strictly isolated across traders",
+      "persona_a": "warren_value",
+      "persona_b": "george_macro",
+      "expected": "persona_b_cannot_read_persona_a_memory"
+    },
+    {
+      "id": "eval_market_closed_skip",
+      "description": "Verify trading tick is skipped when market_open is false",
+      "market_open": false,
+      "expected_status": "skipped_market_closed"
+    },
+    {
+      "id": "eval_tick_idempotency",
+      "description": "Verify duplicate tick_run_id is rejected without double-booking",
+      "tick_run_id": "tick-2026-11-19-001",
+      "expected": "duplicate_rejected"
+    },
+    {
+      "id": "eval_research_mcp_fault_isolation",
+      "description": "Verify failed research MCP server does not corrupt SQLite ledger",
+      "failing_server": "macro_news_mcp",
+      "expected": "trade_ledger_consistent_and_failure_recorded"
+    }
+  ]
+}
